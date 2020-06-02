@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: farmatodo-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/farmatodo
+    username: root
+    password: F4rM4t0D0d4T4b4S3
+  jpa:
+    hibernate:
+      ddl-auto: update
