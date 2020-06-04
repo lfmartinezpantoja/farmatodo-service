@@ -3,9 +3,10 @@ package com.famatodo.dto;
 import lombok.Data;
 
 @Data
-public class ProductDto {
+public class AddProductStoreDto {
 
 	private String productName;
-	private double price;
-	private String barCode;
+	private String storeName;
+	private int quantity;
+	
 }

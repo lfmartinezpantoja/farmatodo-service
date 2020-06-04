@@ -12,15 +12,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "products")
-public class Product implements Serializable{
+@Table(name = "products_stores")
+public class AddProductStore implements Serializable{
 
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long product_store_id;
 	private Long productId;
-	private String productName;
-	private double price;
-	private String barCode;
-	private static final long serialVersionUID = 5943662237752965515L;
+	private Long storeId;
+	private int quantity;
+	private static final long serialVersionUID = -6151499468293412079L;
+	
 	
 }

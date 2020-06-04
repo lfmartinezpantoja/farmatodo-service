@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.famatodo.dto.ClientDto;
 import com.famatodo.dto.ClientResponseDto;
+import com.famatodo.dto.LoginDto;
 import com.famatodo.exception.ServiceException;
 
 
@@ -14,8 +15,10 @@ public interface ClientService {
 
 	public ClientResponseDto updateClient(ClientDto clientDto) throws ServiceException;
 
-	public ClientDto getClient(int identificationNumber) throws ServiceException;
+	public ClientDto getClient(String identificationNumber) throws ServiceException;
 
-	public ClientResponseDto disableClient(int identificationNumber) throws ServiceException;
+	public ClientResponseDto disableClient(String identificationNumber) throws ServiceException;
+	
+	public ClientDto login(LoginDto loginDto) throws ServiceException;
 
 }

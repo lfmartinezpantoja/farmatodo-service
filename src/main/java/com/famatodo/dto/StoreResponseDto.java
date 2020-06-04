@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ProductResponseDto {
+public class StoreResponseDto {
 
 	private String message;
-	private Long productId;
+	private Long storeId;
 }

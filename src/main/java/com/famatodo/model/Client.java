@@ -19,7 +19,7 @@ public class Client implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long clientId;
-	private int identificationNumber;
+	private String identificationNumber;
 	private String firstName;
 	private String secondName;
 	private String lastName;

@@ -7,4 +7,4 @@ spring:
     password: F4rM4t0D0d4T4b4S3
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
