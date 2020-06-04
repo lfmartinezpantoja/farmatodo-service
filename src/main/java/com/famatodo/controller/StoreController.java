@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.famatodo.dto.AddProductStoreDto;
+import com.famatodo.dto.ProductStoreResponseDto;
 import com.famatodo.dto.StoreDto;
 import com.famatodo.dto.StoreResponseDto;
 import com.famatodo.exception.ServiceException;
@@ -25,7 +27,8 @@ public class StoreController {
 	StoreService storeService;
 
 	@PostMapping("/stores")
-	public ResponseEntity<StoreResponseDto> createStore(@RequestBody @Validated StoreDto storeDto) throws ServiceException {
+	public ResponseEntity<StoreResponseDto> createStore(@RequestBody @Validated StoreDto storeDto)
+			throws ServiceException {
 		return new ResponseEntity<StoreResponseDto>(storeService.createStore(storeDto), HttpStatus.OK);
 	}
 
@@ -43,15 +46,26 @@ public class StoreController {
 	public ResponseEntity<StoreResponseDto> deleteStore(@PathVariable String storeName) throws ServiceException {
 		return new ResponseEntity<StoreResponseDto>(storeService.deleteStore(storeName), HttpStatus.OK);
 	}
+
 	@PostMapping("/stores/addproduct")
-	public ResponseEntity<StoreResponseDto> addProductToStore(@RequestBody AddProductStoreDto addProductDto) throws ServiceException {
+	public ResponseEntity<StoreResponseDto> addProductToStore(@RequestBody AddProductStoreDto addProductDto)
+			throws ServiceException {
 		return new ResponseEntity<StoreResponseDto>(storeService.addProductStore(addProductDto), HttpStatus.OK);
-		//return null;
+		// return null;
 	}
-	
-	@PatchMapping("/stores/editproduct/changequantity")
-	public ResponseEntity<StoreResponseDto> editProductToStore(@RequestBody AddProductStoreDto addProductDto) throws ServiceException {
+
+	@PutMapping("/stores/editproduct/changequantity")
+	public ResponseEntity<StoreResponseDto> editProductToStore(@RequestBody AddProductStoreDto addProductDto)
+			throws ServiceException {
 		return new ResponseEntity<StoreResponseDto>(storeService.editProductStore(addProductDto), HttpStatus.OK);
-		//return null;
+		// return null;
+	}
+
+	@GetMapping("/stores/getproductbystore/{storeName}")
+	public ResponseEntity<ProductStoreResponseDto> getProductByStore(@PathVariable String storeName)
+			throws ServiceException {
+
+		return new ResponseEntity<ProductStoreResponseDto>(storeService.getProductStore(storeName), HttpStatus.OK);
+
 	}
 }

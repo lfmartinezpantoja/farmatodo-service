@@ -1,6 +1,7 @@
 package com.famatodo.service;
 
 import com.famatodo.dto.AddProductStoreDto;
+import com.famatodo.dto.ProductStoreResponseDto;
 import com.famatodo.dto.StoreDto;
 import com.famatodo.dto.StoreResponseDto;
 import com.famatodo.exception.ServiceException;
@@ -18,4 +19,6 @@ public interface StoreService {
 	public StoreResponseDto addProductStore(AddProductStoreDto addProductDto) throws ServiceException;
 	
 	public StoreResponseDto editProductStore(AddProductStoreDto addProductDto) throws ServiceException;
+
+	public ProductStoreResponseDto getProductStore(String storeName) throws ServiceException;
 }

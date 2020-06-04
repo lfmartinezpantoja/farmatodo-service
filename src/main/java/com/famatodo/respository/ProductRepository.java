@@ -7,9 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.famatodo.model.Product;
 
-
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long>{
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	public Optional<Product> findByProductName(String productName);
 

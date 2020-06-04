@@ -1,12 +1,11 @@
 package com.famatodo.service.imp;
 
 import static com.famatodo.error.ClientError.CLIENT_DOESNT_EXIST;
+import static com.famatodo.error.ClientError.CLIENT_IS_DISABLED;
 import static com.famatodo.error.ClientError.CLIENT_WITH_IDENTIFICATION_NUMBER_ALREADY_EXIST;
 import static com.famatodo.error.ClientError.EMAIL_OR_USERNAME_ARE_ALREADY_REGISTERED_FOR_OTHER_CLIENT;
-import static com.famatodo.error.ClientError.CLIENT_IS_DISABLED;
 import static com.famatodo.error.ClientError.IDENTIFICATION_NUMBER_IS_REQUIRED;
-import static com.famatodo.error.ClientError.USERNAME_DOESNT_EXIST;
-import static com.famatodo.error.ClientError.PASSWORD_INCORRECT;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import com.famatodo.dto.ClientDto;
 import com.famatodo.dto.ClientResponseDto;
-import com.famatodo.dto.LoginDto;
 import com.famatodo.exception.ServiceException;
 import com.famatodo.model.Client;
 import com.famatodo.respository.ClientRepository;
@@ -147,20 +145,5 @@ public class ClientServiceImp implements ClientService {
 				clientCheck.get().getClientId());
 	}
 
-	@Override
-	public ClientDto login(LoginDto loginDto) throws ServiceException {
-		Optional<Client> clientCheck = clientRepository.findByUsername(loginDto.getUsername());
-		if(!clientCheck.isPresent()) {
-			throw new ServiceException(HttpStatus.NOT_FOUND.value(), USERNAME_DOESNT_EXIST);
-		}
-		boolean passwordCheck = passwordEncoder.matches(loginDto.getPassword(),clientCheck.get().getPassword());
-		if(!passwordCheck) {
-			throw new ServiceException(HttpStatus.BAD_REQUEST.value(), PASSWORD_INCORRECT);
-		}
-		ClientDto clientDto = new ClientDto();
-		modelMapper.map(clientCheck.get(), clientDto);
-		clientDto.setPassword(null);
-		return clientDto;
-	}
 
 }

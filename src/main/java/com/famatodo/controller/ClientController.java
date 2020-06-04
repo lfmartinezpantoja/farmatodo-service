@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.famatodo.dto.ClientDto;
 import com.famatodo.dto.ClientResponseDto;
-import com.famatodo.dto.LoginDto;
 import com.famatodo.exception.ServiceException;
 import com.famatodo.service.ClientService;
 
@@ -41,9 +40,5 @@ public class ClientController {
 	@DeleteMapping("/clients/{identificationNumber}")
 	public ResponseEntity<ClientResponseDto> disableClient(@PathVariable String identificationNumber) throws ServiceException{
 		return new ResponseEntity<ClientResponseDto>(clientService.disableClient(identificationNumber),HttpStatus.OK);
-	}
-	@PostMapping("/clients/login")
-	public ResponseEntity<ClientDto> login(@RequestBody LoginDto loginDto) throws ServiceException{
-		return new ResponseEntity<ClientDto>(clientService.login(loginDto), HttpStatus.OK);
 	}
 }
