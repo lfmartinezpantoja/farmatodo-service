@@ -179,6 +179,7 @@ public class StoreServiceImp implements StoreService {
 			productStoreDto.setProductId(Long.parseLong(String.valueOf(product[0])));
 			productStoreDto.setProductName(String.valueOf(product[1]));
 			productStoreDto.setQuantity(Integer.parseInt((String.valueOf(product[2]))));
+			productStoreDto.setProductPrice(Double.parseDouble(String.valueOf(product[3])));
 			products.add(productStoreDto);
 		}
 		ProductStoreResponseDto productStoreResponseDto = new ProductStoreResponseDto();

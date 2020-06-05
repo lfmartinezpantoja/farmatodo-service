@@ -12,6 +12,6 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
 
 	public Optional<Store> findByStoreName(String storeName);
 
-	@Query("SELECT ps.productId, p.productName, ps.quantity FROM AddProductStore ps JOIN Store s ON s.storeId = ps.storeId  JOIN Product p ON p.productId = ps.productId WHERE s.storeName = ?1")
+	@Query("SELECT ps.productId, p.productName, ps.quantity, p.price FROM AddProductStore ps JOIN Store s ON s.storeId = ps.storeId  JOIN Product p ON p.productId = ps.productId WHERE s.storeName = ?1")
 	public List<Object[]> findProductsByStoreName(String storeName);
 }
